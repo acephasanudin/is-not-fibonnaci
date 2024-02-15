@@ -4,11 +4,6 @@ import (
 	"fmt"
 )
 
-func isFibonacci(n int, fib map[int]bool) bool {
-	_, found := fib[n]
-	return found
-}
-
 func getNonFibonacci(limit int) []int {
 	fib := make(map[int]bool)
 	nonFib := []int{}
@@ -17,10 +12,8 @@ func getNonFibonacci(limit int) []int {
 	for b <= limit {
 		fib[b] = true
 		a, b = b, a+b
-	}
 
-	for num := 0; num <= limit; num++ {
-		if !isFibonacci(num, fib) {
+		for num := a + 1; num < b; num++ {
 			nonFib = append(nonFib, num)
 		}
 	}
